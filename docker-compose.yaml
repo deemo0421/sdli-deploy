@@ -1,0 +1,25 @@
+version: '3'
+services:
+  sdli_frontend:
+    image: otterrr/sdli_frontend
+    restart: unless-stopped
+  sdli_backend:
+    image: otterrr/sdli_backend
+    restart: unless-stopped
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=dev
+      - POSTGRES_USER=wulab
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: unless-stopped 
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=wulab@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=ytwu35415
+    ports:
+      - "5555:80"
